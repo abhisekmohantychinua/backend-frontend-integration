@@ -1,6 +1,7 @@
 package dev.coderabhisek.backend;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +12,7 @@ import lombok.Data;
 @Data
 @Repository
 public class UserRepository {
-    private static List<User> users = List
+    private List<User> users = List
             .of(User
                     .builder()
                     .username("abhisek")
@@ -23,13 +24,16 @@ public class UserRepository {
         return users;
     }
 
-    public User findByUsername(String username) {
+    public Optional<User> findByUsername(String username) {
         return users
                 .stream()
                 .filter(user -> user.getUsername().equals(username))
-                .findFirst()
-                .get();
+                .findFirst();
 
     }
 
+    public User save(User user) {
+        users.add(user);
+        return user;
+    }
 }
