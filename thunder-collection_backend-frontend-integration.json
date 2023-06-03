@@ -1,0 +1,107 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "backend-frontend-integration",
+    "dateExported": "2023-06-03T15:31:44.612Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "1f3cd7db-cce4-4e47-912f-7e0ef7d3b1e8",
+            "colId": "220ee977-1146-4c30-8418-f8f0966ebb93",
+            "containerId": "",
+            "name": "http://localhost:8080/hello",
+            "url": "http://localhost:8080/hello",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-03T15:20:07.630Z",
+            "modified": "2023-06-03T15:30:58.251Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1c55f5c9-e435-4dab-8238-e457ea4e0c76",
+            "colId": "220ee977-1146-4c30-8418-f8f0966ebb93",
+            "containerId": "",
+            "name": "http://localhost:8080/register",
+            "url": "http://localhost:8080/register",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2023-06-03T15:19:56.760Z",
+            "modified": "2023-06-03T15:31:03.243Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"Abhisek\",\n  \"password\":\"pass\",\n  \"about\":\"my about\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "797d2243-2a79-440d-8cb2-297f18bb830e",
+            "colId": "220ee977-1146-4c30-8418-f8f0966ebb93",
+            "containerId": "",
+            "name": "http://localhost:8080/token",
+            "url": "http://localhost:8080/token",
+            "method": "POST",
+            "sortNum": 17500,
+            "created": "2023-06-03T15:19:36.814Z",
+            "modified": "2023-06-03T15:31:07.125Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"Abhisek\",\n  \"password\":\"pass\",\n  \"about\":\"my about\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d9f16df5-2ee4-42ed-bfbb-abac1f5cb5d7",
+            "colId": "220ee977-1146-4c30-8418-f8f0966ebb93",
+            "containerId": "",
+            "name": "http://localhost:8080/about/Abhisek",
+            "url": "http://localhost:8080/about/Abhisek",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-03T15:19:20.157Z",
+            "modified": "2023-06-03T15:29:38.980Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"Abhisek\",\n  \"password\":\"pass\",\n  \"about\":\"my about\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "< Token >"
+            },
+            "tests": []
+        },
+        {
+            "_id": "ce1d7065-4e59-40e3-9e2b-cef3aca0bc20",
+            "colId": "220ee977-1146-4c30-8418-f8f0966ebb93",
+            "containerId": "",
+            "name": "http://localhost:8080/logout",
+            "url": "http://localhost:8080/logout",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-06-03T15:30:39.070Z",
+            "modified": "2023-06-03T15:31:26.235Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"Abhisek\",\n  \"password\":\"pass\",\n  \"about\":\"my about\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "< Token >"
+            },
+            "tests": []
+        }
+    ]
+}
