@@ -10,38 +10,43 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/")
 public class UserController {
-    private final AuthenticationManager authenticationManager;
     private final UserService userService;
+
+    @GetMapping("/hello")
+    public ResponseEntity<String> hello() {
+        return ResponseEntity
+                .ok("HEllo world");
+    }
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
+        System.out.println("Called");
         return ResponseEntity
                 .ok(userService.addUser(user));
     }
 
-    @PostMapping("/login")
+    @PostMapping("/token")
     public ResponseEntity<String> login(@RequestBody User user) {
-        try {
-            authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-            return ResponseEntity
-                    .ok(userService.generateJwtToken(user.getUsername()));
-        } catch (AuthenticationException e) {
-            return ResponseEntity
-                    .status(HttpStatus.UNAUTHORIZED)
-                    .build();
-        }
+        return ResponseEntity
+                .ok(userService.authorize(user));
     }
 
     @GetMapping("/about/{username}")
     public ResponseEntity<String> about(@PathVariable String username) {
+        var a=userService.getUser(username).getAbout();
+        System.out.println(a);
         return ResponseEntity
-                .ok(userService.getUser(username).getAbout());
+                .ok(a);
     }
+
 }
