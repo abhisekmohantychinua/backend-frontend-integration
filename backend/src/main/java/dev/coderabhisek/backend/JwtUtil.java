@@ -19,13 +19,14 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class JwtUtil {
-    private final String SECRET_KEY;
+    private final String SECRET_KEY = "mySecretKeyForJWTs987jouagdy484644647ahuhadgoagdoy46487a87";
 
     public String extractUsername(String token) {
         return extractClaims(token, Claims::getSubject);
     }
 
     public String generateToken(UserDetails userDetails) {
+        System.out.println(userDetails);
         return generateToken(new HashMap<>(), userDetails);
     }
 
@@ -37,7 +38,7 @@ public class JwtUtil {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date((System.currentTimeMillis() + 1000 * 60)))
+                .setExpiration(new Date((System.currentTimeMillis() + 1000 * 60 * 5)))
                 .signWith(getSigninKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -51,7 +52,7 @@ public class JwtUtil {
         return extractUsername(token).equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
-    private boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
