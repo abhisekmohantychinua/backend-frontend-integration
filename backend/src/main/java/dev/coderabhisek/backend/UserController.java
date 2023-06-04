@@ -1,24 +1,16 @@
 package dev.coderabhisek.backend;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/")
 public class UserController {
     private final UserService userService;
 
@@ -43,7 +35,7 @@ public class UserController {
 
     @GetMapping("/about/{username}")
     public ResponseEntity<String> about(@PathVariable String username) {
-        var a=userService.getUser(username).getAbout();
+        var a = userService.getUser(username).getAbout();
         System.out.println(a);
         return ResponseEntity
                 .ok(a);

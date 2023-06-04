@@ -17,14 +17,17 @@ public class LogoutService implements LogoutHandler {
 
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-        String authHeader;
-        if ((authHeader = request.getHeader(HttpHeaders.AUTHORIZATION)) == null || !authHeader.startsWith("Bearer ")) {
+        String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            System.out.println(authHeader + "not starts with bearer");
             return;
         }
 
         String jwt = authHeader.substring(7);
-        if (tokenRepository.findToken(jwt).isPresent())
+        if (tokenRepository.findToken(jwt).isPresent()) {
             tokenRepository.removeToken(jwt);
+            System.out.println("removed from repo " + jwt);
+        }
         SecurityContextHolder.clearContext();
 
     }

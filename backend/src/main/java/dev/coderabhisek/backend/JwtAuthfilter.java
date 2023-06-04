@@ -32,6 +32,7 @@ public class JwtAuthfilter extends OncePerRequestFilter {
             @Nonnull FilterChain filterChain)
             throws ServletException, IOException {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        System.out.println("Authorization " + authHeader);
         final String jwt;
         final String username;
 
